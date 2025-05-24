@@ -39,6 +39,9 @@ Now that you have confirmed USB functionality with two-way communication via a v
 
 ![coding](img/coding.jpg)
 
+Photo by <a href="https://unsplash.com/@pakata?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Pakata Goh</a> on <a href="https://unsplash.com/photos/turned-on-laptop-computer-RDolnHtjVCY?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+      
+
 ### 1. Git for Windows
 | | |
 |---|---|
