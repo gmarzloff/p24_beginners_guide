@@ -164,3 +164,9 @@ pyScienceMode/ $ conda activate cenv
 (cenv) pyScienceMode/ $ conda install -c conda-forge numpy
 ```
 
+### Try out the pyScienceMode and ScienceMode examples!
+
+```bash
+(cenv) pyScienceMode/ $ cd Examples
+(cenv) pyScienceMode/ $ python rehastimp24_example.py
+```
