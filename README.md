@@ -115,17 +115,15 @@ ScienceMode4_python_wrapper/ $ python setup.py bdist_wheel --universal
 [pyScienceMode](https://pysciencemode.readthedocs.io/en/latest) is a high level layer that uses the ScienceMode4 library. Do not attempt to jump here until `ScienceMode4_python_wrapper` is successfully installed.  
 
 ### Setup the repository
-Navigate to your projects folder, outside of the `ScienceMode4_python_wrapper` repository, clone and setup a virtual environment. The environment is named the same as the `ScienceMode4_python_wrapper` but it will be a unique venv created within the `pyScienceMode` folder.
+Navigate to your projects folder, outside of the `ScienceMode4_python_wrapper` repository, clone and setup a new virtual environment with conda. 
 
 ```bash
 projects/ $ git clone git@github.com:s2mLab/pyScienceMode.git
-projects/ $ cd pyScienceMode
-pyScienceMode/ $ python -m venv .venv     [creates a .venv folder within the project]
-pyScienceMode/ $ . .venv/Scripts/activate [starts the environment. note the dot space at the beginning]
 ```
 
 ### Install the program
 ```bash
+projects/ $ cd pyScienceMode
 pyScienceMode/ $ python setup.py install
 ```
 ### Setup a conda environment with python 3.10 and install numpy package
