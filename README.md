@@ -97,42 +97,15 @@ The `smpt` folder is a git submodule, so its contents have to be cloned separate
 
 ### Install dependencies
 
-It is good practice to install packages in a virtual environment when working in python projects. That way each project has its own version of a package, so it will not break if it is using a global package that gets upgraded by another process. Using a virtual environment is a multi-step process. Navigate to the project folder: 
+It is good practice to install packages in a virtual environment when working in python projects. That way each project has its own version of a package, so it will not break if it is using a global package that gets upgraded by another process. Using a virtual environment is a multi-step process. `Venv` is a commonly used virtual environment system, but since pyScienceMode requires conda environment we will use conda envs throughout.  
 
-```bash
-ScienceMode4_python_wrapper/ $ python -m venv .venv     [creates a .venv folder within the project]
-ScienceMode4_python_wrapper/ $ . .venv/Scripts/activate [starts the environment. note the dot space at the beginning]
-```
-
-Once in a virtual environment denoted by the bash prompt starting with `(.venv)`, install the dependencies with `pip` (Pip Installs Packages). FYI `setuptools` is used to help developers build packages and `wheel` creates simplified packages for distributing. Run the following lines: 
-
-```bash
-ScienceMode4_python_wrapper/ $ pip install setuptools wheel 
-ScienceMode4_python_wrapper/ $ python setup.py bdist_wheel --universal
-```
-
-## Install the pyScienceMode interface
-[pyScienceMode](https://pysciencemode.readthedocs.io/en/latest) is a high level layer that uses the ScienceMode4 library. Do not attempt to jump here until `ScienceMode4_python_wrapper` is successfully installed.  
-
-### Setup the repository
-Navigate to your projects folder, outside of the `ScienceMode4_python_wrapper` repository, clone and setup a new virtual environment with conda. 
-
-```bash
-projects/ $ git clone git@github.com:s2mLab/pyScienceMode.git
-```
-
-### Install the program
-```bash
-projects/ $ cd pyScienceMode
-pyScienceMode/ $ python setup.py install
-```
 ### Setup a conda environment with python 3.10 and install numpy package
 The wheel requires version `3.10` and will fail with any other version. 
 
 ```bash
-pyScienceMode/ $ conda create --name cenv python=3.10
-pyScienceMode/ $ conda init 
-pyScienceMode/ $ conda activate cenv
+ScienceMode4_python_wrapper/ $ conda create --name cenv python=3.10
+ScienceMode4_python_wrapper/ $ conda init
+ScienceMode4_python_wrapper/ $ conda activate cenv
 ```
 
 If you see an error:
@@ -156,7 +129,40 @@ In nano, type `Ctrl+O` then `Ctrl+X` to save and exit.  Then run
 
 ```bash
 $ source ~/.bashrc
-pyScienceMode/ $ conda activate cenv
+$ conda activate cenv
+```
+
+Once in a virtual environment denoted by the bash prompt starting with `(cenv)`, install the dependencies with `pip` (Pip Installs Packages). FYI `setuptools` is used to help developers build packages and `wheel` creates simplified packages for distributing. Run the following lines: 
+
+```bash
+(cenv) ScienceMode4_python_wrapper/ $ conda install pip
+(cenv) ScienceMode4_python_wrapper/ $ pip install setuptools wheel 
+(cenv) ScienceMode4_python_wrapper/ $ python setup.py bdist_wheel --universal
+```
+
+## Install the pyScienceMode interface
+
+[pyScienceMode](https://pysciencemode.readthedocs.io/en/latest) is a high level layer that uses the ScienceMode4 library. Do not attempt to jump here until `ScienceMode4_python_wrapper` is successfully installed.  
+
+### Setup the repository
+Navigate to your projects folder, outside of the `ScienceMode4_python_wrapper` repository and clone. 
+
+```bash
+projects/ $ git clone git@github.com:s2mLab/pyScienceMode.git
+```
+Activate the conda environment `cenv` made earlier if it you do not see `(cenv)` in the bash prompt.
+
+```bash
+$ source ~/.bashrc
+$ conda activate cenv
+```
+
+### Install the program
+
+```bash
+(cenv) projects/ $ cd pyScienceMode
+(cenv) pyScienceMode/ $ python setup.py install
+
 (cenv) pyScienceMode/ $ pip install sciencemode_cffi-1.0.0-cp310-cp310-win_amd64.whl
 (cenv) pyScienceMode/ $ pip install crccheck colorama pyserial typing pysciencemode
 (cenv) pyScienceMode/ $ conda install -c conda-forge numpy
