@@ -1,33 +1,56 @@
-# A Beginner's Guide to Getting a P24 Stimulator to work on a Windows PC
+# A Beginner's Guide to Setup a Hasomed P24 Stimulator on a Windows PC
 
 ![p24](img/p24.jpg)
 
 [credit: Christoph Mucke](https://www.linkedin.com/posts/christoph-mucke-a29801b9_p24science-fesresearchapplications-activity-7047189566750904322-Jrnz/?trk=public_profile_like_view)
 ## Introduction
 
-Installation is relatively complicated and there are plenty of gotchas. Most code must be compiled to work. This document explains what components are needed and why. 
+Installation is relatively complicated and there are plenty of gotchas. There are many dependencies to be installed and sometimes compiled to make sure it all works. This document explains what components are needed and why. I tested this process using a Dell Latitude 5410 laptop running Windows 10 Pro. I am an end-user and not affiliated with Hasomed. 
 
 ### Resources
 
 * [ScienceMode4_P24](https://github.com/ScienceMode/ScienceMode4_P24/tree/main): HASOMED's official code base, written in C language.
 * [ScienceMode4_python_wrapper](https://github.com/ScienceMode/ScienceMode4_python_wrapper): HASOMED's python wrapper to call the C API, in python. 
+* [ScienceMode GUI Software](https://github.com/ScienceMode/ScienceMode_TestSoftware)
 
+## ScienceMode Test GUI Software 
+
+Before working exclusively in the command line to setup the library to build your own software, try connecting to P24 using (HASOMED's diagnostic GUI software)[https://github.com/ScienceMode/ScienceMode_TestSoftware]. But before you do that, you must install FTDI USB drivers if they are not already (they might be already there from Arduino or other microprocessor projects).
+
+### FTDI USB Virtual COM Port drivers (easy!)
+
+1. Download the [FTDI drivers](https://ftdichip.com/drivers/vcp-drivers/)
+1. Install using the `.exe` file
+1. Reboot the computer
+
+
+![com error](img/com-error.jpg) 
+
+If you see an error in the GUI when trying to connect "# Could not open serial port (COM3)" despite physically connecting the P24 to the computer, you most likely need the FTDI drivers. Or they may be another COM port in the drop-down menu to try. 
+
+###
+You can send serial commands out with ScienceMode PC Software and receive responses to confirm connections. 
+
+![COM success](img/com-success.jpg)
 
 ## Prerequisites
 
-Install the following software before attempting to build anything. 
+Now that you have confirmed USB functionality with two-way communication via a virtual COM port, you are ready to prepare the ScienceMode libraries.  Install the following prerequisite software before moving onto the next stepse. 
+
+![coding](img/coding.jpg)
 
 ### 1. Git for Windows
 | | |
 |---|---|
-| <img src="img/git_logo.png" width=75px>  | Available [here](https://gitforwindows.org), you will use this to clone software repositories from the command line. |
+| <img src="img/git_logo.png" width="75px">  | Available [here](https://gitforwindows.org), you will use this to clone software repositories from the command line. |
 
 ### 2. Python
 | | |
 |--|--|
-| ![python logo](img/python-logo.png) |Python is used to write software and interact with the P24. Test that [python](https://www.python.org/downloads/windows/) (the highest stable release, e.g. 3.13) is installed, properly linked in [the Windows $PATH environment variable](https://geek-university.com/add-python-to-the-windows-path/), and just works by running the command in Git bash:
+| ![python logo](img/python-logo.png) |Python is used to write software and interact with the P24. Test that [python](https://www.python.org/downloads/windows/) (the highest stable release, e.g. 3.13) is installed, properly linked in [the Windows $PATH environment variable](https://geek-university.com/add-python-to-the-windows-path/), and just works by:
 
-``` 
+Run the following command in Git bash:
+```bash
 $ python --V 
 ```
 
